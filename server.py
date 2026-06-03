@@ -100,7 +100,7 @@ async def generate(req: GenerateRequest):
     if not ANTHROPIC_API_KEY:
         raise HTTPException(status_code=500, detail="ANTHROPIC_API_KEY not set on server.")
 
-    transcript = req.transcript[:3000]
+    transcript = req.transcript[:12000]
 
     async with httpx.AsyncClient(timeout=60) as client:
         res = await client.post(
